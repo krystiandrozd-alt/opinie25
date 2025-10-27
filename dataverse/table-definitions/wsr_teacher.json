@@ -1,0 +1,104 @@
+{
+  "SchemaName": "wsr_teacher",
+  "DisplayName": "Teacher",
+  "DisplayCollectionName": "Teachers",
+  "Description": "Represents a teacher (imported from SDS)",
+  "OwnershipType": "OrganizationOwned",
+  "IsActivity": false,
+  "Attributes": [
+    {
+      "SchemaName": "wsr_teacherid",
+      "DisplayName": "Teacher",
+      "AttributeType": "UniqueidentifierType",
+      "IsPrimaryId": true,
+      "RequiredLevel": "SystemRequired"
+    },
+    {
+      "SchemaName": "wsr_name",
+      "DisplayName": "Full Name",
+      "AttributeType": "StringType",
+      "MaxLength": 200,
+      "RequiredLevel": "ApplicationRequired",
+      "IsPrimaryName": true
+    },
+    {
+      "SchemaName": "wsr_sdsid",
+      "DisplayName": "SDS ID",
+      "AttributeType": "StringType",
+      "MaxLength": 100,
+      "RequiredLevel": "ApplicationRequired",
+      "Description": "School Data Sync ID"
+    },
+    {
+      "SchemaName": "wsr_firstname",
+      "DisplayName": "First Name",
+      "AttributeType": "StringType",
+      "MaxLength": 100,
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_lastname",
+      "DisplayName": "Last Name",
+      "AttributeType": "StringType",
+      "MaxLength": 100,
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_email",
+      "DisplayName": "Email",
+      "AttributeType": "StringType",
+      "MaxLength": 100,
+      "RequiredLevel": "ApplicationRequired",
+      "Format": "Email"
+    },
+    {
+      "SchemaName": "wsr_schoolid",
+      "DisplayName": "School",
+      "AttributeType": "LookupType",
+      "Targets": ["wsr_school"],
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_title",
+      "DisplayName": "Title",
+      "AttributeType": "StringType",
+      "MaxLength": 100,
+      "RequiredLevel": "None",
+      "Description": "Academic title (mgr, dr, etc.)"
+    },
+    {
+      "SchemaName": "wsr_ishomeroomteacher",
+      "DisplayName": "Is Homeroom Teacher",
+      "AttributeType": "BooleanType",
+      "RequiredLevel": "None",
+      "DefaultValue": false
+    },
+    {
+      "SchemaName": "wsr_userid",
+      "DisplayName": "User",
+      "AttributeType": "LookupType",
+      "Targets": ["systemuser"],
+      "RequiredLevel": "None",
+      "Description": "Linked system user for authentication"
+    },
+    {
+      "SchemaName": "wsr_isactive",
+      "DisplayName": "Is Active",
+      "AttributeType": "BooleanType",
+      "RequiredLevel": "ApplicationRequired",
+      "DefaultValue": true
+    }
+  ],
+  "Keys": [
+    {
+      "SchemaName": "wsr_sdsid_key",
+      "DisplayName": "SDS ID Key",
+      "KeyAttributes": ["wsr_sdsid"]
+    },
+    {
+      "SchemaName": "wsr_email_key",
+      "DisplayName": "Email Key",
+      "KeyAttributes": ["wsr_email"]
+    }
+  ]
+}

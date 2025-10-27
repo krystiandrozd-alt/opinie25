@@ -1,0 +1,90 @@
+{
+  "Name": "WSR Teacher",
+  "Description": "Subject teacher - can create and submit opinions for their students",
+  "BusinessUnitName": "Organization",
+  "Privileges": [
+    {
+      "Name": "prvReadwsr_school",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvReadwsr_section",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvReadwsr_teacher",
+      "Level": "User",
+      "AccessRight": "Read",
+      "Description": "Read own teacher record"
+    },
+    {
+      "Name": "prvReadwsr_student",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvReadwsr_studentenrollment",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvReadwsr_teacherroster",
+      "Level": "User",
+      "AccessRight": "Read",
+      "Description": "Read own roster assignments"
+    },
+    {
+      "Name": "prvReadwsr_opinioncycle",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvCreatewsr_opinion",
+      "Level": "User",
+      "AccessRight": "Create",
+      "Description": "Create own opinions"
+    },
+    {
+      "Name": "prvReadwsr_opinion",
+      "Level": "User",
+      "AccessRight": "Read",
+      "Description": "Read own opinions"
+    },
+    {
+      "Name": "prvWritewsr_opinion",
+      "Level": "User",
+      "AccessRight": "Write",
+      "Description": "Edit own opinions in Draft status"
+    },
+    {
+      "Name": "prvDeletewsr_opinion",
+      "Level": "User",
+      "AccessRight": "Delete",
+      "Description": "Delete own opinions in Draft status"
+    },
+    {
+      "Name": "prvAppendwsr_opinion",
+      "Level": "User",
+      "AccessRight": "Append"
+    },
+    {
+      "Name": "prvAppendTowsr_opinion",
+      "Level": "User",
+      "AccessRight": "AppendTo"
+    },
+    {
+      "Name": "prvReadwsr_studentopinionpackage",
+      "Level": "None",
+      "AccessRight": "Read",
+      "Description": "Cannot read packages (homeroom teacher only)"
+    }
+  ],
+  "Notes": [
+    "Subject teachers can only work with their own opinions",
+    "Cannot approve or reject opinions",
+    "Cannot generate or send opinion packages",
+    "Can view students and sections they teach"
+  ]
+}

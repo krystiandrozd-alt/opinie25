@@ -1,0 +1,84 @@
+{
+  "SchemaName": "wsr_school",
+  "DisplayName": "School",
+  "DisplayCollectionName": "Schools",
+  "Description": "Represents a school (imported from SDS)",
+  "OwnershipType": "OrganizationOwned",
+  "IsActivity": false,
+  "Attributes": [
+    {
+      "SchemaName": "wsr_schoolid",
+      "DisplayName": "School",
+      "AttributeType": "UniqueidentifierType",
+      "IsPrimaryId": true,
+      "RequiredLevel": "SystemRequired"
+    },
+    {
+      "SchemaName": "wsr_name",
+      "DisplayName": "School Name",
+      "AttributeType": "StringType",
+      "MaxLength": 200,
+      "RequiredLevel": "ApplicationRequired",
+      "IsPrimaryName": true
+    },
+    {
+      "SchemaName": "wsr_sdsid",
+      "DisplayName": "SDS ID",
+      "AttributeType": "StringType",
+      "MaxLength": 100,
+      "RequiredLevel": "ApplicationRequired",
+      "Description": "School Data Sync ID (unique identifier from SDS)"
+    },
+    {
+      "SchemaName": "wsr_schoolnumber",
+      "DisplayName": "School Number",
+      "AttributeType": "StringType",
+      "MaxLength": 20,
+      "RequiredLevel": "Recommended",
+      "Description": "RSPO or local school number"
+    },
+    {
+      "SchemaName": "wsr_city",
+      "DisplayName": "City",
+      "AttributeType": "StringType",
+      "MaxLength": 100,
+      "RequiredLevel": "None"
+    },
+    {
+      "SchemaName": "wsr_address",
+      "DisplayName": "Address",
+      "AttributeType": "StringType",
+      "MaxLength": 300,
+      "RequiredLevel": "None"
+    },
+    {
+      "SchemaName": "wsr_principalname",
+      "DisplayName": "Principal Name",
+      "AttributeType": "StringType",
+      "MaxLength": 200,
+      "RequiredLevel": "None"
+    },
+    {
+      "SchemaName": "wsr_principalemail",
+      "DisplayName": "Principal Email",
+      "AttributeType": "StringType",
+      "MaxLength": 100,
+      "RequiredLevel": "None",
+      "Format": "Email"
+    },
+    {
+      "SchemaName": "wsr_isactive",
+      "DisplayName": "Is Active",
+      "AttributeType": "BooleanType",
+      "RequiredLevel": "ApplicationRequired",
+      "DefaultValue": true
+    }
+  ],
+  "Keys": [
+    {
+      "SchemaName": "wsr_sdsid_key",
+      "DisplayName": "SDS ID Key",
+      "KeyAttributes": ["wsr_sdsid"]
+    }
+  ]
+}

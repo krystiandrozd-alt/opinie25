@@ -1,0 +1,86 @@
+{
+  "EnvironmentSettings": {
+    "EnvironmentUrl": "https://yourorg.crm4.dynamics.com",
+    "EnvironmentName": "School Opinions Production",
+    "Region": "Europe"
+  },
+  "AzureFunctions": {
+    "ResourceGroup": "rg-school-opinions-prod",
+    "Location": "westeurope",
+    "MarkdownToHtml": {
+      "AppName": "func-schoolopinions-markdown-prod",
+      "Runtime": "node",
+      "RuntimeVersion": "18",
+      "FunctionKey": ""
+    },
+    "MergePDFs": {
+      "AppName": "func-schoolopinions-mergepdf-prod",
+      "Runtime": "python",
+      "RuntimeVersion": "3.11",
+      "FunctionKey": ""
+    }
+  },
+  "SharePoint": {
+    "SiteUrl": "https://yourorg.sharepoint.com/sites/SchoolOpinions",
+    "SDSLibraryName": "SDS_Import",
+    "OpinionPDFsLibraryName": "OpinionPDFs"
+  },
+  "EnvironmentVariables": {
+    "SharePoint_SiteURL": "https://yourorg.sharepoint.com/sites/SchoolOpinions",
+    "SharePoint_SDSLibrary": "SDS_Import",
+    "SharePoint_OpinionPDFsLibrary": "OpinionPDFs",
+    "AzureFunction_MarkdownToHTML_URL": "https://func-schoolopinions-markdown-prod.azurewebsites.net/api/markdown-to-html",
+    "AzureFunction_MergePDFs_URL": "https://func-schoolopinions-mergepdf-prod.azurewebsites.net/api/merge-pdfs",
+    "Email_SenderAddress": "noreply@yourschool.edu.pl",
+    "Email_OpinionTemplate": "OpinionDeliveryTemplate"
+  },
+  "SecurityRoles": [
+    {
+      "RoleName": "WSR Teacher",
+      "AssignToTeams": ["All Teachers"]
+    },
+    {
+      "RoleName": "WSR Homeroom Teacher",
+      "AssignToTeams": ["Homeroom Teachers"]
+    },
+    {
+      "RoleName": "WSR Principal",
+      "AssignToUsers": ["principal@yourschool.edu.pl"]
+    }
+  ],
+  "ConnectionReferences": {
+    "shared_dataverse": {
+      "ConnectionId": "",
+      "Description": "Connection to Dataverse environment"
+    },
+    "shared_office365": {
+      "ConnectionId": "",
+      "Description": "Office 365 Outlook connection for emails"
+    },
+    "shared_sharepointonline": {
+      "ConnectionId": "",
+      "Description": "SharePoint Online connection"
+    }
+  },
+  "Deployment": {
+    "ImportSolution": true,
+    "ImportFlows": true,
+    "DeployAzureFunctions": true,
+    "ImportSampleData": false,
+    "ConfigureSecurityRoles": true,
+    "SetupSharePoint": true
+  },
+  "Monitoring": {
+    "EnableApplicationInsights": true,
+    "ApplicationInsightsKey": "",
+    "EnableDataverseAuditing": true,
+    "EnableFlowAnalytics": true
+  },
+  "Notes": [
+    "Update EnvironmentUrl with your actual Power Platform environment URL",
+    "Update SharePoint SiteUrl with your SharePoint site",
+    "Configure Azure Function URLs after deploying functions",
+    "Set connection IDs after creating connections in Power Automate",
+    "Assign security roles to appropriate users/teams after deployment"
+  ]
+}

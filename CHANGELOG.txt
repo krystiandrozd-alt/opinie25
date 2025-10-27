@@ -1,6 +1,87 @@
 
-v1.0
+School Opinions WSR - Changelog
+================================
+
+v1.0.0 (2024-10-27)
+-------------------
+
+Initial Release - Production Ready
 
 Added:
-- 07_Security_and_ALM_v1.0.md – role, connection references, zmienne środowiskowe i pipeline ALM.
-- 08_Setup_Guide_v1.0.md – instrukcja uruchomienia projektu na podstawie Starter Pack.
+- Complete repository structure for Power Platform deployment
+- 9 Dataverse table definitions:
+  * wsr_school - Schools
+  * wsr_section - Classes/Sections
+  * wsr_teacher - Teachers
+  * wsr_student - Students
+  * wsr_studentenrollment - Student enrollments
+  * wsr_teacherroster - Teacher rosters
+  * wsr_opinioncycle - Opinion cycles
+  * wsr_opinion - Individual opinions
+  * wsr_studentopinionpackage - Aggregated opinion packages
+
+- 3 Security roles with detailed privilege definitions:
+  * WSRTeacher - Subject teachers
+  * WSRHomeroomTeacher - Homeroom teachers
+  * WSRPrincipal - School principal/administrators
+
+- 14 Power Automate flows metadata:
+  * 6 SDS import flows (School, Teacher, Section, Student, Enrollment, Roster)
+  * 8 Opinion workflow flows (Create, Submit, Approve, Reject, Generate PDF, Aggregate, Send, Close)
+
+- 2 Azure Functions:
+  * markdown-to-html (Node.js) - Markdown to HTML conversion
+  * merge-pdfs (Python) - PDF merging and cover page generation
+
+- Power Apps model-driven application metadata
+  * Complete sitemap structure
+  * Forms and views configuration
+  * Dashboard definitions
+
+- Power BI dataset configuration
+  * 12 predefined measures
+  * 3 report pages (Overview, Teacher Performance, Package Status)
+  * Row-level security (RLS) definitions
+
+- SharePoint library configurations:
+  * SDS_Import - CSV import files
+  * OpinionPDFs - Generated PDF documents
+
+- Deployment automation:
+  * deploy.ps1 - PowerShell deployment script
+  * deploy-config.json - Configuration template
+  * post-deployment-steps.md - Detailed post-deployment guide
+
+- Comprehensive documentation:
+  * README.md - Complete repository documentation
+  * Architecture diagrams
+  * Workflow descriptions
+  * Setup and configuration guides
+
+- Sample data:
+  * school_13001.json - Example school data
+
+Features:
+- Full opinion lifecycle automation
+- School Data Sync (SDS) integration
+- Markdown support for opinion writing
+- Automated HTML conversion
+- PDF generation and distribution
+- Email notifications
+- Multi-role security model
+- Power BI dashboards and KPIs
+- Complete ALM support
+
+Technical Stack:
+- Microsoft Power Platform (Dataverse, Power Apps, Power Automate)
+- Azure Functions (Node.js 18, Python 3.11)
+- SharePoint Online
+- Power BI Service
+- Office 365 integration
+
+Notes:
+- Designed for primary schools (grades 1-8)
+- Supports multiple opinion cycles per school year
+- Scalable architecture for multiple schools
+- Production-ready deployment scripts
+

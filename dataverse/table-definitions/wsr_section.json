@@ -1,0 +1,87 @@
+{
+  "SchemaName": "wsr_section",
+  "DisplayName": "Section",
+  "DisplayCollectionName": "Sections",
+  "Description": "Represents a class/section (imported from SDS)",
+  "OwnershipType": "OrganizationOwned",
+  "IsActivity": false,
+  "Attributes": [
+    {
+      "SchemaName": "wsr_sectionid",
+      "DisplayName": "Section",
+      "AttributeType": "UniqueidentifierType",
+      "IsPrimaryId": true,
+      "RequiredLevel": "SystemRequired"
+    },
+    {
+      "SchemaName": "wsr_name",
+      "DisplayName": "Section Name",
+      "AttributeType": "StringType",
+      "MaxLength": 200,
+      "RequiredLevel": "ApplicationRequired",
+      "IsPrimaryName": true,
+      "Description": "e.g., '1A', '2B', '3C'"
+    },
+    {
+      "SchemaName": "wsr_sdsid",
+      "DisplayName": "SDS ID",
+      "AttributeType": "StringType",
+      "MaxLength": 100,
+      "RequiredLevel": "ApplicationRequired",
+      "Description": "School Data Sync ID"
+    },
+    {
+      "SchemaName": "wsr_schoolid",
+      "DisplayName": "School",
+      "AttributeType": "LookupType",
+      "Targets": ["wsr_school"],
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_grade",
+      "DisplayName": "Grade",
+      "AttributeType": "IntegerType",
+      "MinValue": 1,
+      "MaxValue": 8,
+      "RequiredLevel": "ApplicationRequired",
+      "Description": "Grade level (1-8 for primary school)"
+    },
+    {
+      "SchemaName": "wsr_sectionnumber",
+      "DisplayName": "Section Number",
+      "AttributeType": "StringType",
+      "MaxLength": 10,
+      "RequiredLevel": "None",
+      "Description": "Section letter or number (A, B, C, etc.)"
+    },
+    {
+      "SchemaName": "wsr_homeroomteacherid",
+      "DisplayName": "Homeroom Teacher",
+      "AttributeType": "LookupType",
+      "Targets": ["wsr_teacher"],
+      "RequiredLevel": "Recommended"
+    },
+    {
+      "SchemaName": "wsr_schoolyear",
+      "DisplayName": "School Year",
+      "AttributeType": "StringType",
+      "MaxLength": 20,
+      "RequiredLevel": "ApplicationRequired",
+      "Description": "e.g., '2024/2025'"
+    },
+    {
+      "SchemaName": "wsr_isactive",
+      "DisplayName": "Is Active",
+      "AttributeType": "BooleanType",
+      "RequiredLevel": "ApplicationRequired",
+      "DefaultValue": true
+    }
+  ],
+  "Keys": [
+    {
+      "SchemaName": "wsr_sdsid_key",
+      "DisplayName": "SDS ID Key",
+      "KeyAttributes": ["wsr_sdsid"]
+    }
+  ]
+}

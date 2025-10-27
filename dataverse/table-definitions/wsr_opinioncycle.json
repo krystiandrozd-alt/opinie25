@@ -1,0 +1,112 @@
+{
+  "SchemaName": "wsr_opinioncycle",
+  "DisplayName": "Opinion Cycle",
+  "DisplayCollectionName": "Opinion Cycles",
+  "Description": "Represents an opinion collection cycle (e.g., Semester 1, Semester 2)",
+  "OwnershipType": "OrganizationOwned",
+  "IsActivity": false,
+  "Attributes": [
+    {
+      "SchemaName": "wsr_opinioncycleid",
+      "DisplayName": "Opinion Cycle",
+      "AttributeType": "UniqueidentifierType",
+      "IsPrimaryId": true,
+      "RequiredLevel": "SystemRequired"
+    },
+    {
+      "SchemaName": "wsr_name",
+      "DisplayName": "Cycle Name",
+      "AttributeType": "StringType",
+      "MaxLength": 200,
+      "RequiredLevel": "ApplicationRequired",
+      "IsPrimaryName": true,
+      "Description": "e.g., 'Semester 1 2024/2025'"
+    },
+    {
+      "SchemaName": "wsr_schoolid",
+      "DisplayName": "School",
+      "AttributeType": "LookupType",
+      "Targets": ["wsr_school"],
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_schoolyear",
+      "DisplayName": "School Year",
+      "AttributeType": "StringType",
+      "MaxLength": 20,
+      "RequiredLevel": "ApplicationRequired",
+      "Description": "e.g., '2024/2025'"
+    },
+    {
+      "SchemaName": "wsr_semester",
+      "DisplayName": "Semester",
+      "AttributeType": "PicklistType",
+      "RequiredLevel": "ApplicationRequired",
+      "Options": [
+        {"Value": 1, "Label": "Semester 1"},
+        {"Value": 2, "Label": "Semester 2"},
+        {"Value": 3, "Label": "Year-End"}
+      ]
+    },
+    {
+      "SchemaName": "wsr_startdate",
+      "DisplayName": "Start Date",
+      "AttributeType": "DateTimeType",
+      "Format": "DateOnly",
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_enddate",
+      "DisplayName": "End Date",
+      "AttributeType": "DateTimeType",
+      "Format": "DateOnly",
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_submissiondeadline",
+      "DisplayName": "Submission Deadline",
+      "AttributeType": "DateTimeType",
+      "Format": "DateOnly",
+      "RequiredLevel": "ApplicationRequired",
+      "Description": "Deadline for teachers to submit opinions"
+    },
+    {
+      "SchemaName": "wsr_approvaldeadline",
+      "DisplayName": "Approval Deadline",
+      "AttributeType": "DateTimeType",
+      "Format": "DateOnly",
+      "RequiredLevel": "ApplicationRequired",
+      "Description": "Deadline for homeroom teachers to approve opinions"
+    },
+    {
+      "SchemaName": "wsr_status",
+      "DisplayName": "Status",
+      "AttributeType": "PicklistType",
+      "RequiredLevel": "ApplicationRequired",
+      "Options": [
+        {"Value": 1, "Label": "Draft"},
+        {"Value": 2, "Label": "Open"},
+        {"Value": 3, "Label": "Submission Phase"},
+        {"Value": 4, "Label": "Approval Phase"},
+        {"Value": 5, "Label": "Closed"},
+        {"Value": 6, "Label": "Archived"}
+      ],
+      "DefaultValue": 1
+    },
+    {
+      "SchemaName": "wsr_description",
+      "DisplayName": "Description",
+      "AttributeType": "MemoType",
+      "MaxLength": 2000,
+      "RequiredLevel": "None"
+    },
+    {
+      "SchemaName": "wsr_templatemarkdown",
+      "DisplayName": "Template Markdown",
+      "AttributeType": "MemoType",
+      "MaxLength": 10000,
+      "RequiredLevel": "None",
+      "Description": "Markdown template for opinion structure"
+    }
+  ]
+}

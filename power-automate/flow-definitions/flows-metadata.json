@@ -1,0 +1,362 @@
+{
+  "Flows": [
+    {
+      "Name": "SDS_Import_School",
+      "DisplayName": "SDS Import - School",
+      "Description": "Imports school data from SharePoint CSV files (School Data Sync)",
+      "Type": "Scheduled",
+      "Trigger": "Recurrence - Daily at 2:00 AM",
+      "ConnectionReferences": [
+        "shared_dataverse",
+        "shared_sharepointonline"
+      ],
+      "EnvironmentVariables": [
+        "SharePoint_SiteURL",
+        "SharePoint_SDSLibrary"
+      ],
+      "Actions": [
+        "Read CSV from SharePoint (School.csv)",
+        "Parse CSV data",
+        "Upsert school records to Dataverse",
+        "Log import results"
+      ]
+    },
+    {
+      "Name": "SDS_Import_Teachers",
+      "DisplayName": "SDS Import - Teachers",
+      "Description": "Imports teacher data from SharePoint CSV files",
+      "Type": "Scheduled",
+      "Trigger": "Recurrence - Daily at 2:15 AM",
+      "ConnectionReferences": [
+        "shared_dataverse",
+        "shared_sharepointonline"
+      ],
+      "EnvironmentVariables": [
+        "SharePoint_SiteURL",
+        "SharePoint_SDSLibrary"
+      ],
+      "Actions": [
+        "Read CSV from SharePoint (Teacher.csv)",
+        "Parse CSV data",
+        "Upsert teacher records to Dataverse",
+        "Link to System Users if email matches",
+        "Log import results"
+      ]
+    },
+    {
+      "Name": "SDS_Import_Sections",
+      "DisplayName": "SDS Import - Sections",
+      "Description": "Imports section/class data from SharePoint CSV files",
+      "Type": "Scheduled",
+      "Trigger": "Recurrence - Daily at 2:30 AM",
+      "ConnectionReferences": [
+        "shared_dataverse",
+        "shared_sharepointonline"
+      ],
+      "EnvironmentVariables": [
+        "SharePoint_SiteURL",
+        "SharePoint_SDSLibrary"
+      ],
+      "Actions": [
+        "Read CSV from SharePoint (Section.csv)",
+        "Parse CSV data",
+        "Lookup School by SDS ID",
+        "Upsert section records to Dataverse",
+        "Log import results"
+      ]
+    },
+    {
+      "Name": "SDS_Import_Students",
+      "DisplayName": "SDS Import - Students",
+      "Description": "Imports student data from SharePoint CSV files",
+      "Type": "Scheduled",
+      "Trigger": "Recurrence - Daily at 2:45 AM",
+      "ConnectionReferences": [
+        "shared_dataverse",
+        "shared_sharepointonline"
+      ],
+      "EnvironmentVariables": [
+        "SharePoint_SiteURL",
+        "SharePoint_SDSLibrary"
+      ],
+      "Actions": [
+        "Read CSV from SharePoint (Student.csv)",
+        "Parse CSV data",
+        "Lookup School by SDS ID",
+        "Upsert student records to Dataverse",
+        "Log import results"
+      ]
+    },
+    {
+      "Name": "SDS_Import_StudentEnrollment",
+      "DisplayName": "SDS Import - Student Enrollment",
+      "Description": "Imports student enrollment data (links students to sections)",
+      "Type": "Scheduled",
+      "Trigger": "Recurrence - Daily at 3:00 AM",
+      "ConnectionReferences": [
+        "shared_dataverse",
+        "shared_sharepointonline"
+      ],
+      "EnvironmentVariables": [
+        "SharePoint_SiteURL",
+        "SharePoint_SDSLibrary"
+      ],
+      "Actions": [
+        "Read CSV from SharePoint (StudentEnrollment.csv)",
+        "Parse CSV data",
+        "Lookup Student and Section by SDS IDs",
+        "Upsert enrollment records to Dataverse",
+        "Log import results"
+      ]
+    },
+    {
+      "Name": "SDS_Import_TeacherRoster",
+      "DisplayName": "SDS Import - Teacher Roster",
+      "Description": "Imports teacher roster data (links teachers to sections)",
+      "Type": "Scheduled",
+      "Trigger": "Recurrence - Daily at 3:15 AM",
+      "ConnectionReferences": [
+        "shared_dataverse",
+        "shared_sharepointonline"
+      ],
+      "EnvironmentVariables": [
+        "SharePoint_SiteURL",
+        "SharePoint_SDSLibrary"
+      ],
+      "Actions": [
+        "Read CSV from SharePoint (TeacherRoster.csv)",
+        "Parse CSV data",
+        "Lookup Teacher and Section by SDS IDs",
+        "Upsert roster records to Dataverse",
+        "Update Section.HomeroomTeacher if role is Homeroom",
+        "Log import results"
+      ]
+    },
+    {
+      "Name": "WSR_CreateDraftOpinions",
+      "DisplayName": "WSR - Create Draft Opinions",
+      "Description": "Automatically creates draft opinion records when a new cycle starts",
+      "Type": "Automated",
+      "Trigger": "When Opinion Cycle status changes to 'Open'",
+      "ConnectionReferences": [
+        "shared_dataverse"
+      ],
+      "EnvironmentVariables": [],
+      "Actions": [
+        "Get all active Teacher Rosters for school",
+        "For each roster entry",
+        "  Get students enrolled in that section",
+        "  Create draft Opinion record (Teacher + Student + Subject)",
+        "  Pre-fill with cycle template",
+        "Send notification to teachers that cycle is open"
+      ]
+    },
+    {
+      "Name": "WSR_SubmitOpinion",
+      "DisplayName": "WSR - Submit Opinion",
+      "Description": "Processes opinion submission by subject teacher",
+      "Type": "Automated",
+      "Trigger": "When Opinion status changes to 'Submitted'",
+      "ConnectionReferences": [
+        "shared_dataverse",
+        "shared_office365"
+      ],
+      "EnvironmentVariables": [],
+      "Actions": [
+        "Validate opinion content (word count, required fields)",
+        "Call Azure Function to convert Markdown to HTML",
+        "Update wsr_opinionhtml field",
+        "Calculate word and character count",
+        "Update wsr_submittedon timestamp",
+        "Send email notification to Homeroom Teacher",
+        "Update Student Opinion Package progress"
+      ]
+    },
+    {
+      "Name": "WSR_ApproveOpinion",
+      "DisplayName": "WSR - Approve Opinion",
+      "Description": "Processes opinion approval by homeroom teacher",
+      "Type": "Automated",
+      "Trigger": "When Opinion status changes to 'Approved'",
+      "ConnectionReferences": [
+        "shared_dataverse",
+        "shared_office365"
+      ],
+      "EnvironmentVariables": [],
+      "Actions": [
+        "Update wsr_approvedon timestamp",
+        "Set wsr_approvedbyid to current user",
+        "Update Student Opinion Package progress",
+        "Check if all opinions for student are approved",
+        "If yes, set Package status to 'Ready for Review'",
+        "Send confirmation email to subject teacher"
+      ]
+    },
+    {
+      "Name": "WSR_RejectOpinion",
+      "DisplayName": "WSR - Reject Opinion",
+      "Description": "Processes opinion rejection with revision requests",
+      "Type": "Automated",
+      "Trigger": "When Opinion status changes to 'Rejected' or 'Revision Requested'",
+      "ConnectionReferences": [
+        "shared_dataverse",
+        "shared_office365"
+      ],
+      "EnvironmentVariables": [],
+      "Actions": [
+        "Clear approval fields",
+        "Send email to subject teacher with revision comments",
+        "Update Student Opinion Package status"
+      ]
+    },
+    {
+      "Name": "WSR_GenerateOpinionPDF",
+      "DisplayName": "WSR - Generate Opinion PDF",
+      "Description": "Generates PDF document for student opinion package",
+      "Type": "Manual/Automated",
+      "Trigger": "When Package status changes to 'Approved' OR manual trigger",
+      "ConnectionReferences": [
+        "shared_dataverse",
+        "shared_sharepointonline",
+        "shared_azurefunctions"
+      ],
+      "EnvironmentVariables": [
+        "SharePoint_SiteURL",
+        "SharePoint_OpinionPDFsLibrary",
+        "AzureFunction_MergePDFs_URL"
+      ],
+      "Actions": [
+        "Get all approved opinions for student",
+        "Aggregate markdown content",
+        "Call Azure Function to convert to HTML",
+        "Generate PDF using SharePoint Word template",
+        "Upload PDF to SharePoint",
+        "Update wsr_pdfurl in Package",
+        "Update wsr_generatedon timestamp",
+        "Set status to 'PDF Generated'"
+      ]
+    },
+    {
+      "Name": "WSR_AggregateOpinions",
+      "DisplayName": "WSR - Aggregate Opinions",
+      "Description": "Aggregates all opinions for a student into package",
+      "Type": "Automated",
+      "Trigger": "When all opinions for student are Approved",
+      "ConnectionReferences": [
+        "shared_dataverse"
+      ],
+      "EnvironmentVariables": [],
+      "Actions": [
+        "Get Student Opinion Package",
+        "Get all approved opinions for student",
+        "Concatenate markdown content by subject",
+        "Update wsr_aggregatedmarkdown",
+        "Call Azure Function to convert to HTML",
+        "Update wsr_aggregatedhtml",
+        "Update completion percentage",
+        "Set status to 'Ready for Review'"
+      ]
+    },
+    {
+      "Name": "WSR_SendOpinionPackage",
+      "DisplayName": "WSR - Send Opinion Package",
+      "Description": "Sends opinion package PDF to parents via email",
+      "Type": "Manual/Automated",
+      "Trigger": "Manual trigger by Homeroom Teacher OR when Cycle closes",
+      "ConnectionReferences": [
+        "shared_dataverse",
+        "shared_office365",
+        "shared_sharepointonline"
+      ],
+      "EnvironmentVariables": [
+        "Email_SenderAddress",
+        "Email_OpinionTemplate"
+      ],
+      "Actions": [
+        "Get Student Opinion Package",
+        "Validate PDF exists",
+        "Get student parent email",
+        "Download PDF from SharePoint",
+        "Send email with PDF attachment",
+        "Update wsr_senton timestamp",
+        "Set status to 'Sent to Parents'",
+        "Log delivery confirmation"
+      ]
+    },
+    {
+      "Name": "WSR_CloseCycle",
+      "DisplayName": "WSR - Close Opinion Cycle",
+      "Description": "Closes opinion cycle and archives data",
+      "Type": "Manual",
+      "Trigger": "Manual trigger by Principal",
+      "ConnectionReferences": [
+        "shared_dataverse",
+        "shared_office365"
+      ],
+      "EnvironmentVariables": [],
+      "Actions": [
+        "Validate all packages are sent",
+        "Set cycle status to 'Closed'",
+        "Generate completion report",
+        "Send summary email to Principal",
+        "Archive unsent packages (flag for review)"
+      ]
+    }
+  ],
+  "ConnectionReferences": {
+    "shared_dataverse": {
+      "Type": "Microsoft Dataverse",
+      "Description": "Connection to Dataverse environment"
+    },
+    "shared_office365": {
+      "Type": "Office 365 Outlook",
+      "Description": "Connection for sending emails"
+    },
+    "shared_sharepointonline": {
+      "Type": "SharePoint",
+      "Description": "Connection to SharePoint site for file storage"
+    },
+    "shared_azurefunctions": {
+      "Type": "Azure Functions",
+      "Description": "Connection to Azure Functions for data processing"
+    }
+  },
+  "EnvironmentVariables": {
+    "SharePoint_SiteURL": {
+      "DisplayName": "SharePoint Site URL",
+      "Description": "URL of the SharePoint site for document storage",
+      "Type": "String",
+      "DefaultValue": "https://contoso.sharepoint.com/sites/SchoolOpinions"
+    },
+    "SharePoint_SDSLibrary": {
+      "DisplayName": "SDS Import Library",
+      "Description": "Document library name for SDS CSV files",
+      "Type": "String",
+      "DefaultValue": "SDS_Import"
+    },
+    "SharePoint_OpinionPDFsLibrary": {
+      "DisplayName": "Opinion PDFs Library",
+      "Description": "Document library for generated opinion PDFs",
+      "Type": "String",
+      "DefaultValue": "OpinionPDFs"
+    },
+    "AzureFunction_MergePDFs_URL": {
+      "DisplayName": "Azure Function - Merge PDFs URL",
+      "Description": "URL of Azure Function for PDF operations",
+      "Type": "String",
+      "DefaultValue": ""
+    },
+    "Email_SenderAddress": {
+      "DisplayName": "Email Sender Address",
+      "Description": "From address for automated emails",
+      "Type": "String",
+      "DefaultValue": "noreply@school.edu.pl"
+    },
+    "Email_OpinionTemplate": {
+      "DisplayName": "Email Opinion Template",
+      "Description": "Template for opinion delivery emails",
+      "Type": "String",
+      "DefaultValue": "OpinionDeliveryTemplate"
+    }
+  }
+}

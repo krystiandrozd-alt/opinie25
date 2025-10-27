@@ -1,0 +1,136 @@
+{
+  "SchemaName": "wsr_opinion",
+  "DisplayName": "Opinion",
+  "DisplayCollectionName": "Opinions",
+  "Description": "Represents a teacher's opinion about a student",
+  "OwnershipType": "UserOwned",
+  "IsActivity": false,
+  "Attributes": [
+    {
+      "SchemaName": "wsr_opinionid",
+      "DisplayName": "Opinion",
+      "AttributeType": "UniqueidentifierType",
+      "IsPrimaryId": true,
+      "RequiredLevel": "SystemRequired"
+    },
+    {
+      "SchemaName": "wsr_name",
+      "DisplayName": "Name",
+      "AttributeType": "StringType",
+      "MaxLength": 300,
+      "RequiredLevel": "None",
+      "IsPrimaryName": true,
+      "Description": "Auto-generated: [Student] - [Teacher] - [Subject]"
+    },
+    {
+      "SchemaName": "wsr_opinioncycleid",
+      "DisplayName": "Opinion Cycle",
+      "AttributeType": "LookupType",
+      "Targets": ["wsr_opinioncycle"],
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_studentid",
+      "DisplayName": "Student",
+      "AttributeType": "LookupType",
+      "Targets": ["wsr_student"],
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_teacherid",
+      "DisplayName": "Teacher",
+      "AttributeType": "LookupType",
+      "Targets": ["wsr_teacher"],
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_sectionid",
+      "DisplayName": "Section",
+      "AttributeType": "LookupType",
+      "Targets": ["wsr_section"],
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_subject",
+      "DisplayName": "Subject",
+      "AttributeType": "StringType",
+      "MaxLength": 100,
+      "RequiredLevel": "ApplicationRequired",
+      "Description": "Subject for this opinion"
+    },
+    {
+      "SchemaName": "wsr_opinionmarkdown",
+      "DisplayName": "Opinion (Markdown)",
+      "AttributeType": "MemoType",
+      "MaxLength": 10000,
+      "RequiredLevel": "ApplicationRequired",
+      "Description": "Teacher's opinion in Markdown format"
+    },
+    {
+      "SchemaName": "wsr_opinionhtml",
+      "DisplayName": "Opinion (HTML)",
+      "AttributeType": "MemoType",
+      "MaxLength": 20000,
+      "RequiredLevel": "None",
+      "Description": "Converted HTML version (auto-generated)"
+    },
+    {
+      "SchemaName": "wsr_status",
+      "DisplayName": "Status",
+      "AttributeType": "PicklistType",
+      "RequiredLevel": "ApplicationRequired",
+      "Options": [
+        {"Value": 1, "Label": "Draft"},
+        {"Value": 2, "Label": "Submitted"},
+        {"Value": 3, "Label": "Approved"},
+        {"Value": 4, "Label": "Rejected"},
+        {"Value": 5, "Label": "Revision Requested"}
+      ],
+      "DefaultValue": 1
+    },
+    {
+      "SchemaName": "wsr_submittedon",
+      "DisplayName": "Submitted On",
+      "AttributeType": "DateTimeType",
+      "Format": "DateAndTime",
+      "RequiredLevel": "None"
+    },
+    {
+      "SchemaName": "wsr_approvedon",
+      "DisplayName": "Approved On",
+      "AttributeType": "DateTimeType",
+      "Format": "DateAndTime",
+      "RequiredLevel": "None"
+    },
+    {
+      "SchemaName": "wsr_approvedbyid",
+      "DisplayName": "Approved By",
+      "AttributeType": "LookupType",
+      "Targets": ["wsr_teacher"],
+      "RequiredLevel": "None",
+      "Description": "Homeroom teacher who approved"
+    },
+    {
+      "SchemaName": "wsr_revisioncomments",
+      "DisplayName": "Revision Comments",
+      "AttributeType": "MemoType",
+      "MaxLength": 2000,
+      "RequiredLevel": "None",
+      "Description": "Comments from homeroom teacher requesting revisions"
+    },
+    {
+      "SchemaName": "wsr_wordcount",
+      "DisplayName": "Word Count",
+      "AttributeType": "IntegerType",
+      "RequiredLevel": "None",
+      "Description": "Auto-calculated word count"
+    },
+    {
+      "SchemaName": "wsr_charactercount",
+      "DisplayName": "Character Count",
+      "AttributeType": "IntegerType",
+      "RequiredLevel": "None",
+      "Description": "Auto-calculated character count"
+    }
+  ]
+}

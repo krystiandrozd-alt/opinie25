@@ -1,0 +1,214 @@
+{
+  "Name": "WSR Principal",
+  "Description": "School principal - full access to all data, can manage cycles and view all reports",
+  "BusinessUnitName": "Organization",
+  "Privileges": [
+    {
+      "Name": "prvCreatewsr_school",
+      "Level": "Organization",
+      "AccessRight": "Create"
+    },
+    {
+      "Name": "prvReadwsr_school",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvWritewsr_school",
+      "Level": "Organization",
+      "AccessRight": "Write"
+    },
+    {
+      "Name": "prvDeletewsr_school",
+      "Level": "Organization",
+      "AccessRight": "Delete"
+    },
+    {
+      "Name": "prvCreatewsr_section",
+      "Level": "Organization",
+      "AccessRight": "Create"
+    },
+    {
+      "Name": "prvReadwsr_section",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvWritewsr_section",
+      "Level": "Organization",
+      "AccessRight": "Write"
+    },
+    {
+      "Name": "prvDeletewsr_section",
+      "Level": "Organization",
+      "AccessRight": "Delete"
+    },
+    {
+      "Name": "prvCreatewsr_teacher",
+      "Level": "Organization",
+      "AccessRight": "Create"
+    },
+    {
+      "Name": "prvReadwsr_teacher",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvWritewsr_teacher",
+      "Level": "Organization",
+      "AccessRight": "Write"
+    },
+    {
+      "Name": "prvDeletewsr_teacher",
+      "Level": "Organization",
+      "AccessRight": "Delete"
+    },
+    {
+      "Name": "prvCreatewsr_student",
+      "Level": "Organization",
+      "AccessRight": "Create"
+    },
+    {
+      "Name": "prvReadwsr_student",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvWritewsr_student",
+      "Level": "Organization",
+      "AccessRight": "Write"
+    },
+    {
+      "Name": "prvDeletewsr_student",
+      "Level": "Organization",
+      "AccessRight": "Delete"
+    },
+    {
+      "Name": "prvCreatewsr_studentenrollment",
+      "Level": "Organization",
+      "AccessRight": "Create"
+    },
+    {
+      "Name": "prvReadwsr_studentenrollment",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvWritewsr_studentenrollment",
+      "Level": "Organization",
+      "AccessRight": "Write"
+    },
+    {
+      "Name": "prvDeletewsr_studentenrollment",
+      "Level": "Organization",
+      "AccessRight": "Delete"
+    },
+    {
+      "Name": "prvCreatewsr_teacherroster",
+      "Level": "Organization",
+      "AccessRight": "Create"
+    },
+    {
+      "Name": "prvReadwsr_teacherroster",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvWritewsr_teacherroster",
+      "Level": "Organization",
+      "AccessRight": "Write"
+    },
+    {
+      "Name": "prvDeletewsr_teacherroster",
+      "Level": "Organization",
+      "AccessRight": "Delete"
+    },
+    {
+      "Name": "prvCreatewsr_opinioncycle",
+      "Level": "Organization",
+      "AccessRight": "Create"
+    },
+    {
+      "Name": "prvReadwsr_opinioncycle",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvWritewsr_opinioncycle",
+      "Level": "Organization",
+      "AccessRight": "Write"
+    },
+    {
+      "Name": "prvDeletewsr_opinioncycle",
+      "Level": "Organization",
+      "AccessRight": "Delete"
+    },
+    {
+      "Name": "prvCreatewsr_opinion",
+      "Level": "Organization",
+      "AccessRight": "Create"
+    },
+    {
+      "Name": "prvReadwsr_opinion",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvWritewsr_opinion",
+      "Level": "Organization",
+      "AccessRight": "Write"
+    },
+    {
+      "Name": "prvDeletewsr_opinion",
+      "Level": "Organization",
+      "AccessRight": "Delete"
+    },
+    {
+      "Name": "prvAppendwsr_opinion",
+      "Level": "Organization",
+      "AccessRight": "Append"
+    },
+    {
+      "Name": "prvAppendTowsr_opinion",
+      "Level": "Organization",
+      "AccessRight": "AppendTo"
+    },
+    {
+      "Name": "prvCreatewsr_studentopinionpackage",
+      "Level": "Organization",
+      "AccessRight": "Create"
+    },
+    {
+      "Name": "prvReadwsr_studentopinionpackage",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvWritewsr_studentopinionpackage",
+      "Level": "Organization",
+      "AccessRight": "Write"
+    },
+    {
+      "Name": "prvDeletewsr_studentopinionpackage",
+      "Level": "Organization",
+      "AccessRight": "Delete"
+    },
+    {
+      "Name": "prvAppendwsr_studentopinionpackage",
+      "Level": "Organization",
+      "AccessRight": "Append"
+    },
+    {
+      "Name": "prvAppendTowsr_studentopinionpackage",
+      "Level": "Organization",
+      "AccessRight": "AppendTo"
+    }
+  ],
+  "Notes": [
+    "Principal has full CRUD access to all entities at Organization level",
+    "Can manage opinion cycles",
+    "Can view and export all reports",
+    "Can override any decisions",
+    "Full access to Power BI dashboards"
+  ]
+}

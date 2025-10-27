@@ -1,0 +1,95 @@
+{
+  "LibraryName": "SDS_Import",
+  "Title": "School Data Sync Import Files",
+  "Description": "Document library for CSV files from School Data Sync (SDS)",
+  "EnableVersioning": true,
+  "MajorVersionLimit": 10,
+  "ContentTypesEnabled": false,
+  "RequireCheckOut": false,
+  "Columns": [
+    {
+      "Name": "ImportDate",
+      "Type": "DateTime",
+      "Required": false,
+      "DisplayName": "Import Date"
+    },
+    {
+      "Name": "FileType",
+      "Type": "Choice",
+      "Required": false,
+      "DisplayName": "File Type",
+      "Choices": [
+        "School",
+        "Teacher",
+        "Section",
+        "Student",
+        "StudentEnrollment",
+        "TeacherRoster"
+      ]
+    },
+    {
+      "Name": "ImportStatus",
+      "Type": "Choice",
+      "Required": false,
+      "DisplayName": "Import Status",
+      "Choices": [
+        "Pending",
+        "Processing",
+        "Completed",
+        "Failed"
+      ],
+      "Default": "Pending"
+    },
+    {
+      "Name": "RecordsProcessed",
+      "Type": "Number",
+      "Required": false,
+      "DisplayName": "Records Processed"
+    },
+    {
+      "Name": "ErrorMessage",
+      "Type": "Note",
+      "Required": false,
+      "DisplayName": "Error Message"
+    }
+  ],
+  "Views": [
+    {
+      "Name": "All Files",
+      "ViewType": "Standard",
+      "Default": true,
+      "Columns": ["Name", "FileType", "ImportDate", "ImportStatus", "RecordsProcessed", "Modified"],
+      "Sort": [{"Column": "Modified", "Ascending": false}]
+    },
+    {
+      "Name": "Pending Imports",
+      "ViewType": "Standard",
+      "Filter": "ImportStatus eq 'Pending'",
+      "Columns": ["Name", "FileType", "ImportDate", "Modified"]
+    },
+    {
+      "Name": "Failed Imports",
+      "ViewType": "Standard",
+      "Filter": "ImportStatus eq 'Failed'",
+      "Columns": ["Name", "FileType", "ImportDate", "ErrorMessage", "Modified"]
+    }
+  ],
+  "Permissions": {
+    "BreakInheritance": true,
+    "Groups": [
+      {
+        "Name": "SDS Import Admins",
+        "Permission": "Full Control"
+      },
+      {
+        "Name": "System Flows",
+        "Permission": "Contribute"
+      }
+    ]
+  },
+  "Notes": [
+    "This library is used by Power Automate flows to read SDS CSV files",
+    "Files should follow SDS CSV format specification",
+    "Flows run daily at 2:00 AM to process new files"
+  ]
+}

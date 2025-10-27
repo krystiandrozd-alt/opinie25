@@ -1,0 +1,110 @@
+{
+  "School": {
+    "wsr_name": "Szkoła Podstawowa nr 13",
+    "wsr_sdsid": "school_13001",
+    "wsr_schoolnumber": "13001",
+    "wsr_city": "Warszawa",
+    "wsr_address": "ul. Przykładowa 10, 00-001 Warszawa",
+    "wsr_principalname": "Jan Kowalski",
+    "wsr_principalemail": "dyrektor@sp13.edu.pl",
+    "wsr_isactive": true
+  },
+  "Sections": [
+    {
+      "wsr_name": "1A",
+      "wsr_sdsid": "section_1a_2024",
+      "wsr_grade": 1,
+      "wsr_sectionnumber": "A",
+      "wsr_schoolyear": "2024/2025",
+      "wsr_isactive": true
+    },
+    {
+      "wsr_name": "1B",
+      "wsr_sdsid": "section_1b_2024",
+      "wsr_grade": 1,
+      "wsr_sectionnumber": "B",
+      "wsr_schoolyear": "2024/2025",
+      "wsr_isactive": true
+    },
+    {
+      "wsr_name": "2A",
+      "wsr_sdsid": "section_2a_2024",
+      "wsr_grade": 2,
+      "wsr_sectionnumber": "A",
+      "wsr_schoolyear": "2024/2025",
+      "wsr_isactive": true
+    }
+  ],
+  "Teachers": [
+    {
+      "wsr_firstname": "Anna",
+      "wsr_lastname": "Nowak",
+      "wsr_name": "Anna Nowak",
+      "wsr_sdsid": "teacher_anowak",
+      "wsr_email": "a.nowak@sp13.edu.pl",
+      "wsr_title": "mgr",
+      "wsr_ishomeroomteacher": true,
+      "wsr_isactive": true
+    },
+    {
+      "wsr_firstname": "Piotr",
+      "wsr_lastname": "Wiśniewski",
+      "wsr_name": "Piotr Wiśniewski",
+      "wsr_sdsid": "teacher_pwisniewski",
+      "wsr_email": "p.wisniewski@sp13.edu.pl",
+      "wsr_title": "mgr",
+      "wsr_ishomeroomteacher": false,
+      "wsr_isactive": true
+    },
+    {
+      "wsr_firstname": "Maria",
+      "wsr_lastname": "Dąbrowska",
+      "wsr_name": "Maria Dąbrowska",
+      "wsr_sdsid": "teacher_mdabrowska",
+      "wsr_email": "m.dabrowska@sp13.edu.pl",
+      "wsr_title": "mgr",
+      "wsr_ishomeroomteacher": true,
+      "wsr_isactive": true
+    }
+  ],
+  "Students": [
+    {
+      "wsr_firstname": "Tomasz",
+      "wsr_lastname": "Kowalczyk",
+      "wsr_name": "Tomasz Kowalczyk",
+      "wsr_sdsid": "student_tkowalczyk",
+      "wsr_email": "t.kowalczyk@uczniowie.sp13.edu.pl",
+      "wsr_studentnumber": "13001001",
+      "wsr_birthdate": "2017-05-15",
+      "wsr_gender": 1,
+      "wsr_parentemail": "rodzice.kowalczyk@example.com",
+      "wsr_parentphone": "+48 500 100 200",
+      "wsr_isactive": true
+    },
+    {
+      "wsr_firstname": "Katarzyna",
+      "wsr_lastname": "Lewandowska",
+      "wsr_name": "Katarzyna Lewandowska",
+      "wsr_sdsid": "student_klewandowska",
+      "wsr_email": "k.lewandowska@uczniowie.sp13.edu.pl",
+      "wsr_studentnumber": "13001002",
+      "wsr_birthdate": "2017-08-22",
+      "wsr_gender": 2,
+      "wsr_parentemail": "rodzice.lewandowski@example.com",
+      "wsr_parentphone": "+48 600 200 300",
+      "wsr_isactive": true
+    }
+  ],
+  "OpinionCycle": {
+    "wsr_name": "Semestr 1 2024/2025",
+    "wsr_schoolyear": "2024/2025",
+    "wsr_semester": 1,
+    "wsr_startdate": "2024-09-01",
+    "wsr_enddate": "2025-01-31",
+    "wsr_submissiondeadline": "2025-01-15",
+    "wsr_approvaldeadline": "2025-01-25",
+    "wsr_status": 2,
+    "wsr_description": "Cykl zbierania opinii za pierwszy semestr roku szkolnego 2024/2025",
+    "wsr_templatemarkdown": "## Ocena zachowania\n\n[Wpisz ocenę zachowania ucznia]\n\n## Ocena postępów w nauce\n\n[Opisz postępy ucznia w nauce]\n\n## Mocne strony\n\n[Wymień mocne strony ucznia]\n\n## Obszary do rozwoju\n\n[Wskaż obszary wymagające dalszej pracy]\n\n## Uwagi dodatkowe\n\n[Dodatkowe uwagi nauczyciela]"
+  }
+}

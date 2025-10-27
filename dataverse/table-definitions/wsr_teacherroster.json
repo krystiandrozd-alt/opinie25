@@ -1,0 +1,82 @@
+{
+  "SchemaName": "wsr_teacherroster",
+  "DisplayName": "Teacher Roster",
+  "DisplayCollectionName": "Teacher Rosters",
+  "Description": "Links teachers to sections for specific subjects (imported from SDS)",
+  "OwnershipType": "OrganizationOwned",
+  "IsActivity": false,
+  "Attributes": [
+    {
+      "SchemaName": "wsr_teacherrosterid",
+      "DisplayName": "Teacher Roster",
+      "AttributeType": "UniqueidentifierType",
+      "IsPrimaryId": true,
+      "RequiredLevel": "SystemRequired"
+    },
+    {
+      "SchemaName": "wsr_name",
+      "DisplayName": "Name",
+      "AttributeType": "StringType",
+      "MaxLength": 200,
+      "RequiredLevel": "None",
+      "IsPrimaryName": true,
+      "Description": "Auto-generated name"
+    },
+    {
+      "SchemaName": "wsr_sdsid",
+      "DisplayName": "SDS ID",
+      "AttributeType": "StringType",
+      "MaxLength": 100,
+      "RequiredLevel": "ApplicationRequired",
+      "Description": "School Data Sync ID"
+    },
+    {
+      "SchemaName": "wsr_teacherid",
+      "DisplayName": "Teacher",
+      "AttributeType": "LookupType",
+      "Targets": ["wsr_teacher"],
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_sectionid",
+      "DisplayName": "Section",
+      "AttributeType": "LookupType",
+      "Targets": ["wsr_section"],
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_subject",
+      "DisplayName": "Subject",
+      "AttributeType": "StringType",
+      "MaxLength": 100,
+      "RequiredLevel": "Recommended",
+      "Description": "Subject taught (e.g., Mathematics, Polish, etc.)"
+    },
+    {
+      "SchemaName": "wsr_role",
+      "DisplayName": "Role",
+      "AttributeType": "PicklistType",
+      "RequiredLevel": "ApplicationRequired",
+      "Options": [
+        {"Value": 1, "Label": "Homeroom Teacher"},
+        {"Value": 2, "Label": "Subject Teacher"},
+        {"Value": 3, "Label": "Assistant Teacher"}
+      ],
+      "DefaultValue": 2
+    },
+    {
+      "SchemaName": "wsr_isactive",
+      "DisplayName": "Is Active",
+      "AttributeType": "BooleanType",
+      "RequiredLevel": "ApplicationRequired",
+      "DefaultValue": true
+    }
+  ],
+  "Keys": [
+    {
+      "SchemaName": "wsr_sdsid_key",
+      "DisplayName": "SDS ID Key",
+      "KeyAttributes": ["wsr_sdsid"]
+    }
+  ]
+}

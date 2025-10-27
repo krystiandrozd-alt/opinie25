@@ -1,0 +1,127 @@
+{
+  "SchemaName": "wsr_student",
+  "DisplayName": "Student",
+  "DisplayCollectionName": "Students",
+  "Description": "Represents a student (imported from SDS)",
+  "OwnershipType": "OrganizationOwned",
+  "IsActivity": false,
+  "Attributes": [
+    {
+      "SchemaName": "wsr_studentid",
+      "DisplayName": "Student",
+      "AttributeType": "UniqueidentifierType",
+      "IsPrimaryId": true,
+      "RequiredLevel": "SystemRequired"
+    },
+    {
+      "SchemaName": "wsr_name",
+      "DisplayName": "Full Name",
+      "AttributeType": "StringType",
+      "MaxLength": 200,
+      "RequiredLevel": "ApplicationRequired",
+      "IsPrimaryName": true
+    },
+    {
+      "SchemaName": "wsr_sdsid",
+      "DisplayName": "SDS ID",
+      "AttributeType": "StringType",
+      "MaxLength": 100,
+      "RequiredLevel": "ApplicationRequired",
+      "Description": "School Data Sync ID"
+    },
+    {
+      "SchemaName": "wsr_firstname",
+      "DisplayName": "First Name",
+      "AttributeType": "StringType",
+      "MaxLength": 100,
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_lastname",
+      "DisplayName": "Last Name",
+      "AttributeType": "StringType",
+      "MaxLength": 100,
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_email",
+      "DisplayName": "Email",
+      "AttributeType": "StringType",
+      "MaxLength": 100,
+      "RequiredLevel": "None",
+      "Format": "Email"
+    },
+    {
+      "SchemaName": "wsr_schoolid",
+      "DisplayName": "School",
+      "AttributeType": "LookupType",
+      "Targets": ["wsr_school"],
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_studentnumber",
+      "DisplayName": "Student Number",
+      "AttributeType": "StringType",
+      "MaxLength": 50,
+      "RequiredLevel": "Recommended",
+      "Description": "Local student identifier"
+    },
+    {
+      "SchemaName": "wsr_pesel",
+      "DisplayName": "PESEL",
+      "AttributeType": "StringType",
+      "MaxLength": 11,
+      "RequiredLevel": "None",
+      "Description": "National identification number (if applicable)"
+    },
+    {
+      "SchemaName": "wsr_birthdate",
+      "DisplayName": "Birth Date",
+      "AttributeType": "DateTimeType",
+      "Format": "DateOnly",
+      "RequiredLevel": "None"
+    },
+    {
+      "SchemaName": "wsr_gender",
+      "DisplayName": "Gender",
+      "AttributeType": "PicklistType",
+      "RequiredLevel": "None",
+      "Options": [
+        {"Value": 1, "Label": "Male"},
+        {"Value": 2, "Label": "Female"},
+        {"Value": 3, "Label": "Other"}
+      ]
+    },
+    {
+      "SchemaName": "wsr_parentemail",
+      "DisplayName": "Parent Email",
+      "AttributeType": "StringType",
+      "MaxLength": 100,
+      "RequiredLevel": "Recommended",
+      "Format": "Email",
+      "Description": "Primary parent/guardian email"
+    },
+    {
+      "SchemaName": "wsr_parentphone",
+      "DisplayName": "Parent Phone",
+      "AttributeType": "StringType",
+      "MaxLength": 20,
+      "RequiredLevel": "None",
+      "Format": "Phone"
+    },
+    {
+      "SchemaName": "wsr_isactive",
+      "DisplayName": "Is Active",
+      "AttributeType": "BooleanType",
+      "RequiredLevel": "ApplicationRequired",
+      "DefaultValue": true
+    }
+  ],
+  "Keys": [
+    {
+      "SchemaName": "wsr_sdsid_key",
+      "DisplayName": "SDS ID Key",
+      "KeyAttributes": ["wsr_sdsid"]
+    }
+  ]
+}

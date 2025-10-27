@@ -1,0 +1,74 @@
+{
+  "SchemaName": "wsr_studentenrollment",
+  "DisplayName": "Student Enrollment",
+  "DisplayCollectionName": "Student Enrollments",
+  "Description": "Links students to sections (imported from SDS)",
+  "OwnershipType": "OrganizationOwned",
+  "IsActivity": false,
+  "Attributes": [
+    {
+      "SchemaName": "wsr_studentenrollmentid",
+      "DisplayName": "Student Enrollment",
+      "AttributeType": "UniqueidentifierType",
+      "IsPrimaryId": true,
+      "RequiredLevel": "SystemRequired"
+    },
+    {
+      "SchemaName": "wsr_name",
+      "DisplayName": "Name",
+      "AttributeType": "StringType",
+      "MaxLength": 200,
+      "RequiredLevel": "None",
+      "IsPrimaryName": true,
+      "Description": "Auto-generated name"
+    },
+    {
+      "SchemaName": "wsr_sdsid",
+      "DisplayName": "SDS ID",
+      "AttributeType": "StringType",
+      "MaxLength": 100,
+      "RequiredLevel": "ApplicationRequired",
+      "Description": "School Data Sync ID"
+    },
+    {
+      "SchemaName": "wsr_studentid",
+      "DisplayName": "Student",
+      "AttributeType": "LookupType",
+      "Targets": ["wsr_student"],
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_sectionid",
+      "DisplayName": "Section",
+      "AttributeType": "LookupType",
+      "Targets": ["wsr_section"],
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_enrollmentdate",
+      "DisplayName": "Enrollment Date",
+      "AttributeType": "DateTimeType",
+      "Format": "DateOnly",
+      "RequiredLevel": "None"
+    },
+    {
+      "SchemaName": "wsr_isactive",
+      "DisplayName": "Is Active",
+      "AttributeType": "BooleanType",
+      "RequiredLevel": "ApplicationRequired",
+      "DefaultValue": true
+    }
+  ],
+  "Keys": [
+    {
+      "SchemaName": "wsr_sdsid_key",
+      "DisplayName": "SDS ID Key",
+      "KeyAttributes": ["wsr_sdsid"]
+    },
+    {
+      "SchemaName": "wsr_student_section_key",
+      "DisplayName": "Student-Section Key",
+      "KeyAttributes": ["wsr_studentid", "wsr_sectionid"]
+    }
+  ]
+}

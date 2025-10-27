@@ -1,0 +1,123 @@
+{
+  "AppName": "School Opinions Manager",
+  "Version": "1.0.0",
+  "Description": "Model-driven app for managing school opinions (WSR)",
+  "AppType": "ModelDriven",
+  "Publisher": "School WSR Team",
+  "SolutionName": "SchoolOpinionsWSR",
+  "Components": [
+    {
+      "Type": "Table",
+      "Name": "wsr_school",
+      "Forms": ["Main", "Quick Create", "Quick View"],
+      "Views": ["Active Schools", "All Schools", "My School"]
+    },
+    {
+      "Type": "Table",
+      "Name": "wsr_section",
+      "Forms": ["Main", "Quick Create", "Quick View"],
+      "Views": ["Active Sections", "All Sections", "My Sections", "By Grade"]
+    },
+    {
+      "Type": "Table",
+      "Name": "wsr_teacher",
+      "Forms": ["Main", "Quick Create", "Quick View"],
+      "Views": ["Active Teachers", "All Teachers", "Homeroom Teachers", "My Profile"]
+    },
+    {
+      "Type": "Table",
+      "Name": "wsr_student",
+      "Forms": ["Main", "Quick Create", "Quick View"],
+      "Views": ["Active Students", "All Students", "By Section", "By Grade"]
+    },
+    {
+      "Type": "Table",
+      "Name": "wsr_opinioncycle",
+      "Forms": ["Main", "Quick Create"],
+      "Views": ["Active Cycles", "All Cycles", "Current Semester", "Archived Cycles"],
+      "Dashboards": ["Cycle Progress Dashboard"]
+    },
+    {
+      "Type": "Table",
+      "Name": "wsr_opinion",
+      "Forms": ["Main - Teacher View", "Main - Homeroom View", "Quick View"],
+      "Views": [
+        "My Opinions",
+        "My Draft Opinions",
+        "My Submitted Opinions",
+        "Opinions to Review (Homeroom)",
+        "All Opinions in My Class",
+        "Opinions by Student",
+        "Opinions by Subject"
+      ]
+    },
+    {
+      "Type": "Table",
+      "Name": "wsr_studentopinionpackage",
+      "Forms": ["Main - Homeroom View", "Quick View"],
+      "Views": [
+        "My Class Packages",
+        "Ready for Review",
+        "Packages to Send",
+        "All Packages",
+        "Sent Packages"
+      ],
+      "Dashboards": ["Package Completion Dashboard"]
+    }
+  ],
+  "SiteMap": {
+    "Areas": [
+      {
+        "Title": "Opinions",
+        "Icon": "/_imgs/area_16x16.png",
+        "Groups": [
+          {
+            "Title": "My Work",
+            "SubAreas": [
+              {"Title": "My Opinions", "Entity": "wsr_opinion", "View": "My Opinions"},
+              {"Title": "My Class Packages", "Entity": "wsr_studentopinionpackage", "View": "My Class Packages"}
+            ]
+          },
+          {
+            "Title": "Data",
+            "SubAreas": [
+              {"Title": "Students", "Entity": "wsr_student"},
+              {"Title": "Sections", "Entity": "wsr_section"},
+              {"Title": "Teachers", "Entity": "wsr_teacher"},
+              {"Title": "Opinion Cycles", "Entity": "wsr_opinioncycle"}
+            ]
+          },
+          {
+            "Title": "Reports",
+            "SubAreas": [
+              {"Title": "Cycle Progress", "Type": "Dashboard"},
+              {"Title": "Package Status", "Type": "Dashboard"}
+            ]
+          }
+        ]
+      },
+      {
+        "Title": "Administration",
+        "Icon": "/_imgs/area_16x16.png",
+        "Groups": [
+          {
+            "Title": "Setup",
+            "SubAreas": [
+              {"Title": "Schools", "Entity": "wsr_school"},
+              {"Title": "SDS Import", "Type": "WebResource"}
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Security": {
+    "Roles": ["WSRTeacher", "WSRHomeroomTeacher", "WSRPrincipal"]
+  },
+  "Notes": [
+    "App uses security roles to control access to different areas",
+    "Teachers see only their own opinions",
+    "Homeroom teachers see all opinions for their class",
+    "Principals have full access to all data"
+  ]
+}

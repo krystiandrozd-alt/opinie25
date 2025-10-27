@@ -1,0 +1,147 @@
+{
+  "SchemaName": "wsr_studentopinionpackage",
+  "DisplayName": "Student Opinion Package",
+  "DisplayCollectionName": "Student Opinion Packages",
+  "Description": "Aggregated package of all opinions for a student in a cycle",
+  "OwnershipType": "OrganizationOwned",
+  "IsActivity": false,
+  "Attributes": [
+    {
+      "SchemaName": "wsr_studentopinionpackageid",
+      "DisplayName": "Student Opinion Package",
+      "AttributeType": "UniqueidentifierType",
+      "IsPrimaryId": true,
+      "RequiredLevel": "SystemRequired"
+    },
+    {
+      "SchemaName": "wsr_name",
+      "DisplayName": "Name",
+      "AttributeType": "StringType",
+      "MaxLength": 300,
+      "RequiredLevel": "None",
+      "IsPrimaryName": true,
+      "Description": "Auto-generated: [Student] - [Cycle]"
+    },
+    {
+      "SchemaName": "wsr_opinioncycleid",
+      "DisplayName": "Opinion Cycle",
+      "AttributeType": "LookupType",
+      "Targets": ["wsr_opinioncycle"],
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_studentid",
+      "DisplayName": "Student",
+      "AttributeType": "LookupType",
+      "Targets": ["wsr_student"],
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_sectionid",
+      "DisplayName": "Section",
+      "AttributeType": "LookupType",
+      "Targets": ["wsr_section"],
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_homeroomteacherid",
+      "DisplayName": "Homeroom Teacher",
+      "AttributeType": "LookupType",
+      "Targets": ["wsr_teacher"],
+      "RequiredLevel": "ApplicationRequired"
+    },
+    {
+      "SchemaName": "wsr_aggregatedmarkdown",
+      "DisplayName": "Aggregated Opinions (Markdown)",
+      "AttributeType": "MemoType",
+      "MaxLength": 100000,
+      "RequiredLevel": "None",
+      "Description": "All opinions combined in Markdown"
+    },
+    {
+      "SchemaName": "wsr_aggregatedhtml",
+      "DisplayName": "Aggregated Opinions (HTML)",
+      "AttributeType": "MemoType",
+      "MaxLength": 100000,
+      "RequiredLevel": "None",
+      "Description": "All opinions combined in HTML"
+    },
+    {
+      "SchemaName": "wsr_pdfurl",
+      "DisplayName": "PDF URL",
+      "AttributeType": "StringType",
+      "MaxLength": 500,
+      "RequiredLevel": "None",
+      "Description": "URL to generated PDF in SharePoint"
+    },
+    {
+      "SchemaName": "wsr_status",
+      "DisplayName": "Status",
+      "AttributeType": "PicklistType",
+      "RequiredLevel": "ApplicationRequired",
+      "Options": [
+        {"Value": 1, "Label": "Draft"},
+        {"Value": 2, "Label": "In Progress"},
+        {"Value": 3, "Label": "Ready for Review"},
+        {"Value": 4, "Label": "Approved"},
+        {"Value": 5, "Label": "PDF Generated"},
+        {"Value": 6, "Label": "Sent to Parents"}
+      ],
+      "DefaultValue": 1
+    },
+    {
+      "SchemaName": "wsr_totalopinions",
+      "DisplayName": "Total Opinions",
+      "AttributeType": "IntegerType",
+      "RequiredLevel": "None",
+      "Description": "Number of subject opinions included"
+    },
+    {
+      "SchemaName": "wsr_approvedopinions",
+      "DisplayName": "Approved Opinions",
+      "AttributeType": "IntegerType",
+      "RequiredLevel": "None",
+      "Description": "Number of approved opinions"
+    },
+    {
+      "SchemaName": "wsr_completionpercentage",
+      "DisplayName": "Completion %",
+      "AttributeType": "DecimalType",
+      "MinValue": 0,
+      "MaxValue": 100,
+      "Precision": 2,
+      "RequiredLevel": "None"
+    },
+    {
+      "SchemaName": "wsr_generatedon",
+      "DisplayName": "Generated On",
+      "AttributeType": "DateTimeType",
+      "Format": "DateAndTime",
+      "RequiredLevel": "None",
+      "Description": "When PDF was generated"
+    },
+    {
+      "SchemaName": "wsr_senton",
+      "DisplayName": "Sent On",
+      "AttributeType": "DateTimeType",
+      "Format": "DateAndTime",
+      "RequiredLevel": "None",
+      "Description": "When sent to parents"
+    },
+    {
+      "SchemaName": "wsr_homeroomcomments",
+      "DisplayName": "Homeroom Comments",
+      "AttributeType": "MemoType",
+      "MaxLength": 5000,
+      "RequiredLevel": "None",
+      "Description": "Additional comments from homeroom teacher"
+    }
+  ],
+  "Keys": [
+    {
+      "SchemaName": "wsr_student_cycle_key",
+      "DisplayName": "Student-Cycle Key",
+      "KeyAttributes": ["wsr_studentid", "wsr_opinioncycleid"]
+    }
+  ]
+}

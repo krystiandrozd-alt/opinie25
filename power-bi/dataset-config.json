@@ -1,0 +1,192 @@
+{
+  "DatasetName": "School Opinions KPIs",
+  "Version": "1.0.0",
+  "Description": "Power BI dataset for opinion cycle metrics and KPIs",
+  "DataSource": {
+    "Type": "Dataverse",
+    "ConnectionMode": "DirectQuery",
+    "Tables": [
+      "wsr_school",
+      "wsr_section",
+      "wsr_teacher",
+      "wsr_student",
+      "wsr_opinioncycle",
+      "wsr_opinion",
+      "wsr_studentopinionpackage"
+    ]
+  },
+  "Measures": [
+    {
+      "Name": "Total Opinions",
+      "Formula": "COUNTROWS('wsr_opinion')",
+      "Format": "Whole Number"
+    },
+    {
+      "Name": "Submitted Opinions",
+      "Formula": "CALCULATE(COUNTROWS('wsr_opinion'), 'wsr_opinion'[wsr_status] >= 2)",
+      "Format": "Whole Number"
+    },
+    {
+      "Name": "Approved Opinions",
+      "Formula": "CALCULATE(COUNTROWS('wsr_opinion'), 'wsr_opinion'[wsr_status] = 3)",
+      "Format": "Whole Number"
+    },
+    {
+      "Name": "Submission Rate",
+      "Formula": "DIVIDE([Submitted Opinions], [Total Opinions], 0)",
+      "Format": "Percentage"
+    },
+    {
+      "Name": "Approval Rate",
+      "Formula": "DIVIDE([Approved Opinions], [Submitted Opinions], 0)",
+      "Format": "Percentage"
+    },
+    {
+      "Name": "Total Packages",
+      "Formula": "COUNTROWS('wsr_studentopinionpackage')",
+      "Format": "Whole Number"
+    },
+    {
+      "Name": "Sent Packages",
+      "Formula": "CALCULATE(COUNTROWS('wsr_studentopinionpackage'), 'wsr_studentopinionpackage'[wsr_status] = 6)",
+      "Format": "Whole Number"
+    },
+    {
+      "Name": "Package Completion Rate",
+      "Formula": "DIVIDE([Sent Packages], [Total Packages], 0)",
+      "Format": "Percentage"
+    },
+    {
+      "Name": "Avg Words per Opinion",
+      "Formula": "AVERAGE('wsr_opinion'[wsr_wordcount])",
+      "Format": "Whole Number"
+    },
+    {
+      "Name": "Total Students",
+      "Formula": "COUNTROWS('wsr_student')",
+      "Format": "Whole Number"
+    },
+    {
+      "Name": "Total Teachers",
+      "Formula": "COUNTROWS('wsr_teacher')",
+      "Format": "Whole Number"
+    },
+    {
+      "Name": "Days Until Deadline",
+      "Formula": "DATEDIFF(TODAY(), MAX('wsr_opinioncycle'[wsr_submissiondeadline]), DAY)",
+      "Format": "Whole Number"
+    }
+  ],
+  "Reports": [
+    {
+      "Name": "Opinion Cycle KPIs",
+      "Pages": [
+        {
+          "Name": "Overview",
+          "Visuals": [
+            {
+              "Type": "Card",
+              "Measure": "Submission Rate",
+              "Title": "Overall Submission Rate"
+            },
+            {
+              "Type": "Card",
+              "Measure": "Approval Rate",
+              "Title": "Overall Approval Rate"
+            },
+            {
+              "Type": "Card",
+              "Measure": "Package Completion Rate",
+              "Title": "Package Completion"
+            },
+            {
+              "Type": "Gauge",
+              "Measure": "Days Until Deadline",
+              "Title": "Days Until Deadline"
+            },
+            {
+              "Type": "Stacked Bar Chart",
+              "Axis": "wsr_section[wsr_name]",
+              "Values": ["Submitted Opinions", "Approved Opinions"],
+              "Title": "Opinions by Section"
+            },
+            {
+              "Type": "Donut Chart",
+              "Legend": "wsr_opinion[wsr_status]",
+              "Values": "Total Opinions",
+              "Title": "Opinion Status Distribution"
+            },
+            {
+              "Type": "Line Chart",
+              "Axis": "wsr_opinion[wsr_submittedon]",
+              "Values": "Submitted Opinions",
+              "Title": "Submissions Over Time"
+            }
+          ]
+        },
+        {
+          "Name": "Teacher Performance",
+          "Visuals": [
+            {
+              "Type": "Table",
+              "Columns": [
+                "wsr_teacher[wsr_name]",
+                "Total Opinions",
+                "Submitted Opinions",
+                "Approved Opinions",
+                "Submission Rate"
+              ],
+              "Title": "Teacher Statistics"
+            },
+            {
+              "Type": "Clustered Bar Chart",
+              "Axis": "wsr_teacher[wsr_name]",
+              "Values": "Avg Words per Opinion",
+              "Title": "Average Opinion Length by Teacher"
+            }
+          ]
+        },
+        {
+          "Name": "Package Status",
+          "Visuals": [
+            {
+              "Type": "Matrix",
+              "Rows": "wsr_section[wsr_name]",
+              "Columns": "wsr_studentopinionpackage[wsr_status]",
+              "Values": "Total Packages",
+              "Title": "Package Status by Section"
+            },
+            {
+              "Type": "Funnel Chart",
+              "Values": [
+                "Total Packages",
+                "Ready for Review",
+                "PDF Generated",
+                "Sent Packages"
+              ],
+              "Title": "Package Pipeline"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "RefreshSchedule": {
+    "Enabled": true,
+    "Frequency": "Daily",
+    "Time": "06:00",
+    "TimeZone": "Central European Time"
+  },
+  "Security": {
+    "RLS": [
+      {
+        "Role": "Teacher",
+        "Filter": "'wsr_opinion'[ownerid] = USERPRINCIPALNAME()"
+      },
+      {
+        "Role": "Homeroom Teacher",
+        "Filter": "'wsr_section'[wsr_homeroomteacherid] = LOOKUPVALUE('wsr_teacher'[wsr_teacherid], 'wsr_teacher'[wsr_email], USERPRINCIPALNAME())"
+      }
+    ]
+  }
+}

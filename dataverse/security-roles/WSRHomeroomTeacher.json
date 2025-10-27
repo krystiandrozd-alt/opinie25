@@ -1,0 +1,117 @@
+{
+  "Name": "WSR Homeroom Teacher",
+  "Description": "Homeroom teacher - can review, approve/reject opinions and manage packages for their class",
+  "BusinessUnitName": "Organization",
+  "Privileges": [
+    {
+      "Name": "prvReadwsr_school",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvReadwsr_section",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvReadwsr_teacher",
+      "Level": "Organization",
+      "AccessRight": "Read",
+      "Description": "Read all teachers in school"
+    },
+    {
+      "Name": "prvReadwsr_student",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvReadwsr_studentenrollment",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvReadwsr_teacherroster",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvReadwsr_opinioncycle",
+      "Level": "Organization",
+      "AccessRight": "Read"
+    },
+    {
+      "Name": "prvCreatewsr_opinion",
+      "Level": "User",
+      "AccessRight": "Create",
+      "Description": "Create own opinions as subject teacher"
+    },
+    {
+      "Name": "prvReadwsr_opinion",
+      "Level": "BusinessUnit",
+      "AccessRight": "Read",
+      "Description": "Read all opinions for their class"
+    },
+    {
+      "Name": "prvWritewsr_opinion",
+      "Level": "BusinessUnit",
+      "AccessRight": "Write",
+      "Description": "Approve/reject opinions, add revision comments"
+    },
+    {
+      "Name": "prvDeletewsr_opinion",
+      "Level": "User",
+      "AccessRight": "Delete",
+      "Description": "Delete only own opinions"
+    },
+    {
+      "Name": "prvAppendwsr_opinion",
+      "Level": "BusinessUnit",
+      "AccessRight": "Append"
+    },
+    {
+      "Name": "prvAppendTowsr_opinion",
+      "Level": "BusinessUnit",
+      "AccessRight": "AppendTo"
+    },
+    {
+      "Name": "prvCreatewsr_studentopinionpackage",
+      "Level": "User",
+      "AccessRight": "Create",
+      "Description": "Create packages for their class"
+    },
+    {
+      "Name": "prvReadwsr_studentopinionpackage",
+      "Level": "BusinessUnit",
+      "AccessRight": "Read",
+      "Description": "Read packages for their class"
+    },
+    {
+      "Name": "prvWritewsr_studentopinionpackage",
+      "Level": "BusinessUnit",
+      "AccessRight": "Write",
+      "Description": "Update packages, add homeroom comments"
+    },
+    {
+      "Name": "prvDeletewsr_studentopinionpackage",
+      "Level": "User",
+      "AccessRight": "Delete",
+      "Description": "Delete packages in Draft status"
+    },
+    {
+      "Name": "prvAppendwsr_studentopinionpackage",
+      "Level": "BusinessUnit",
+      "AccessRight": "Append"
+    },
+    {
+      "Name": "prvAppendTowsr_studentopinionpackage",
+      "Level": "BusinessUnit",
+      "AccessRight": "AppendTo"
+    }
+  ],
+  "Notes": [
+    "Homeroom teachers have full control over opinions and packages for their class",
+    "Can approve/reject opinions from subject teachers",
+    "Can generate and send opinion packages",
+    "Still have subject teacher privileges for subjects they teach"
+  ]
+}

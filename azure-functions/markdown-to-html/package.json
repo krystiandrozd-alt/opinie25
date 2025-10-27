@@ -1,0 +1,16 @@
+{
+  "name": "markdown-to-html-function",
+  "version": "1.0.0",
+  "description": "Azure Function to convert Markdown to sanitized HTML",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "marked": "^11.0.0",
+    "isomorphic-dompurify": "^2.9.0"
+  },
+  "devDependencies": {},
+  "author": "School Opinions WSR",
+  "license": "MIT"
+}
