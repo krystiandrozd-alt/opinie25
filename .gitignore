@@ -20,3 +20,23 @@ Thumbs.db
 # Temporary files
 temp/
 tmp/
+
+# Azure Functions
+bin/
+obj/
+.python_packages/
+__pycache__/
+__azurite_db*__.json
+.python_version
+.venv/
+venv/
+node_modules/
+dist/
+*.pyc
+*.pyo
+
+# Azure Functions local settings
+local.settings.json
+
+# Function runtime
+azure-functions-core-tools/
