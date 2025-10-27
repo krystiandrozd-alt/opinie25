@@ -1,0 +1,6 @@
+
+v1.0
+
+Added:
+- 07_Security_and_ALM_v1.0.md – role, connection references, zmienne środowiskowe i pipeline ALM.
+- 08_Setup_Guide_v1.0.md – instrukcja uruchomienia projektu na podstawie Starter Pack.

@@ -1,0 +1,22 @@
+# Power Platform
+*.msapp
+*.zip
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Temporary files
+temp/
+tmp/
