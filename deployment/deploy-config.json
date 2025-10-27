@@ -1,12 +1,12 @@
 {
   "EnvironmentSettings": {
-    "EnvironmentUrl": "https://yourorg.crm4.dynamics.com",
-    "EnvironmentName": "School Opinions Production",
+    "EnvironmentUrl": "https://org72a8fbdb.crm4.dynamics.com/",
+    "EnvironmentName": "Test",
     "Region": "Europe"
   },
   "AzureFunctions": {
     "ResourceGroup": "rg-school-opinions-prod",
-    "Location": "westeurope",
+    "Location": "polandcentral",
     "MarkdownToHtml": {
       "AppName": "func-schoolopinions-markdown-prod",
       "Runtime": "node",
@@ -21,17 +21,17 @@
     }
   },
   "SharePoint": {
-    "SiteUrl": "https://yourorg.sharepoint.com/sites/SchoolOpinions",
+    "SiteUrl": "https://realnawawpl.sharepoint.com//sites/SchoolOpinions",
     "SDSLibraryName": "SDS_Import",
     "OpinionPDFsLibraryName": "OpinionPDFs"
   },
   "EnvironmentVariables": {
-    "SharePoint_SiteURL": "https://yourorg.sharepoint.com/sites/SchoolOpinions",
+    "SharePoint_SiteURL": "https://realnawawpl.sharepoint.com//sites/SchoolOpinions",
     "SharePoint_SDSLibrary": "SDS_Import",
     "SharePoint_OpinionPDFsLibrary": "OpinionPDFs",
     "AzureFunction_MarkdownToHTML_URL": "https://func-schoolopinions-markdown-prod.azurewebsites.net/api/markdown-to-html",
     "AzureFunction_MergePDFs_URL": "https://func-schoolopinions-mergepdf-prod.azurewebsites.net/api/merge-pdfs",
-    "Email_SenderAddress": "noreply@yourschool.edu.pl",
+    "Email_SenderAddress": "krystian.drozd@realna.waw/pl",
     "Email_OpinionTemplate": "OpinionDeliveryTemplate"
   },
   "SecurityRoles": [
@@ -45,7 +45,7 @@
     },
     {
       "RoleName": "WSR Principal",
-      "AssignToUsers": ["principal@yourschool.edu.pl"]
+      "AssignToUsers": ["aleksandra.drozd@realna.waw.pl"]
     }
   ],
   "ConnectionReferences": {
